@@ -1,5 +1,5 @@
 {
-  "name": "your-title-here",
+  "name": "json-csv",
   "version": "1.0.0",
   "description": "",
   "author": "Laura Robertson",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "pug": "2.0.3",
+    "express-es6-template-engine": "2.1.7",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.0.0-alpha.2",
     "express": "4.16.4",
