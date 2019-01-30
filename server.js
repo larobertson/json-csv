@@ -19,23 +19,32 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 });
 
+let csv = fs.createWriteStream('json-csv.txt');
+
 app.post('/', (req, res) => { 
   let headers = [];
-  let csv = [];
+  let data = [];
+  
   for (key in req.body) {
     if (!headers.includes(key)) {
       headers.push(key);
     }
   }
   for (key in req.body) {
-    csv.push(req.body[key])
+    data.push(req.body[key])
   }
-  console.log('this is the csv:', headers, csv);
+
+  csv.write(`${headers.join(', ')}\n`);
+  csv.write(`${data.join(', ')}\n`);
+  console.log('this is the csv:', headers, data);
   //res.send(csv);
-  res.render('index', { });
+  //map headers and data to a large text string
+    //at the end make a new line
+
+  res.render('index');
   //pug.renderFile(csv, 'index.pug');
   
 })
 
 
-app.listen(port, () => console.log(`You are not alone, trust no one\nwith love, port ${port}!`));
+app.listen(port, () => console.log(`You are not alone, trust no one!\nMr. ${port}`));
